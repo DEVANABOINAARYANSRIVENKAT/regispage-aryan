@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewpoint" content="width=device-width,initial-scale=1.0">
+        <title>Document</title>
+        <script>
+            function check(){
+                var username=document.getElementById("fullname").value
+                var usernameCheck=/^[a-zA-Z ]+$/
+                var emailId=document.getElementById("emailid").value
+                var emailIdCheck=/^[a-z0-9.]+@[a-z0-9]+\.[a-z]{2,3}$/
+                var male=document.getElementById("gendermale").checked
+                var female=document.getElementById("genderfemale").checked
+                var gender;
+                var pwd=document.getElementById("password").value
+                var pwdCheck=/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
+                var cPwd=document.getElementById("cpassword").value
+                var cPwdCheck=/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
+                var state = document.getElementById("myList").value;
+                if(male==true){
+                    gender="male"
+                }
+                else if(female==true){
+                    gender="female"
+                }
+                else{
+                    gender="null"
+                }                
+                console.log(username)
+                console.log(emailId)
+                console.log(pwd)
+                console.log(cPwd)
+                console.log(gender)
+                console.log(state)
+                if(username==""){
+                    alert("please enter your name")
+                    return false 
+                }
+                if(username.length<3){
+                    alert("please enter your full name")
+                    return false
+                }
+                if(!username.match(usernameCheck)){
+                    alert("Name is invalid!!  --> please enter valid name")
+                    return false
+                }
+                if(emailId==""){
+                    alert("please enter your emailId")
+                    return false 
+                }
+                if(!emailId.match(emailIdCheck)){
+                    alert("emailId is invalid!!  --> please enter valid emailId")
+                    return false
+                }
+                if(pwd==""){
+                    alert("please enter your password")
+                    return false 
+                }
+                if(pwd.length<6){
+                    alert("Password must contain more than 6 characters")
+                    return false
+                }
+                if(pwd.length>16){
+                    alert("Password must contain less than 16 characters")
+                    return false
+                }
+                if(!pwd.match(pwdCheck)){
+                alert("password is invalid!!  --> password must contain atleast:\n 1 capital letter\n 1 small letter\n 1 special character\n 1 digit")
+                    return false
+                }
+                if(!cPwd.match(pwd)){
+                    alert("confirm password must match with password")
+                    return false
+                }
+                return true
+            }
+        </script>
+        <style>
+            .bgimage{
+                background-color: rgb(31, 186, 173);                
+                background-size: cover;
+                min-height: 90vh;
+                padding:5%;
+                background-position: center;
+                position:relative;
+            }
+            .registration{
+                width:64%;
+                text-align:right;
+                position:absolute;
+                top:30%;
+                left:0%;                
+            }
+            .reg{
+                width:64%;
+                text-align:center;
+                position:absolute;
+                top:53%;
+                left:23%;                
+            }
+            .registration input{
+                padding: 5px 6px;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="bgimage">
+            <div class="registration">
+        <form onsubmit="return check()">
+            <b><label for="fullname">Full Name :</label></b>
+            <input placeholder="enter your fullname" id="fullname" size="25"/>
+            <p><b><label for="emailid"> email  Id : </label></b>
+            <input placeholder="enter your emailid" id="emailid" size="25"/></p>
+            <p><b><label for="password"> Password : </label></b>
+            <input type="password" placeholder="enter your password" id="password" size="25"/></p>
+            <p><b><label for="cpassword"> Cnfrm Pwd : </label></b>
+            <input type="password" placeholder="Re-enter your password" id="cpassword" size="25"/></p>
+            </div>
+            <div class="reg">
+            <b><label for="gendermale"> Gender: </label></b>
+            <input type="radio" name="gender" id="gendermale" value="Male"/>male
+            <input type="radio" name="gender" id="genderfemale" value="Female"/>female 
+            <p><b><label for="myList"> State: </label></b>                    
+            <select id = "myList" onchange = "check()" ></p>
+            <option>---Select_State---</option>
+            <option> Andhra Pradesh </option>
+            <option> Telangana </option>
+            <option> Tamilnadu </option>
+            <option> Kerala </option>
+            <option> Goa </option>
+            </select>        
+            <p><button>Submit</button></p>
+            </div>
+        </form>
+        </div>
+        </section>
+    </body>
+</html>
+
+
+
